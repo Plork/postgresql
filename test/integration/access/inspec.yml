@@ -5,6 +5,6 @@ copyright_email: aaron.kalin@dnsimple.com
 license: Apache
 summary: Check that proper access is provided in the pg_hba conf
 version: 0.0.1
+inspec_version: '~> 1.0'
 supports:
   - os-family: unix
-  - inspec: '~> 1.0'

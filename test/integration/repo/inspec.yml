@@ -5,6 +5,6 @@ copyright_email: dan.webb@damacus.io
 license: Apache
 summary: Check that repostories are enabled and we can download a package
 version: 0.0.1
+inspec_version: '~> 1.0'
 supports:
   - os-family: unix
-  - inspec: '~> 1.0'
