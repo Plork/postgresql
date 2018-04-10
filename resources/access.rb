@@ -30,7 +30,7 @@ action :grant do
   with_run_context :root do # ~FC037
     edit_resource(:template, "#{conf_dir}/pg_hba.conf") do |new_resource|
       source new_resource.source
-      cookbook new_resource.cookbook
+      cookbook_name new_resource.cookbook
       owner 'postgres'
       group 'postgres'
       mode '0600'
