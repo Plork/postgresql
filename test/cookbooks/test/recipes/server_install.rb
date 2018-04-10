@@ -5,6 +5,7 @@ postgresql_repository 'install' do
 end
 
 postgresql_server_install 'package' do
+  action %i(install create)
   version '9.6'
 end
 

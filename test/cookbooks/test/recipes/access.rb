@@ -1,4 +1,5 @@
 postgresql_server_install 'postgresql' do
+  action %i(install create)
   version '9.6'
   password '12345'
   port 5432
