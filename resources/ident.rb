@@ -23,10 +23,9 @@ property :comment,       [String, nil], default: nil
 property :notification,  Symbol, default: :reload
 
 action :create do
-  with_run_context :root do # ~FC037
+  r = with_run_context :root do # ~FC037
     edit_resource(:template, "#{conf_dir}/pg_ident.conf") do |new_resource|
       source 'pg_ident.conf.erb'
-      cookbook 'postgresql'
       owner 'postgres'
       group 'postgres'
       mode '0640'
@@ -42,6 +41,7 @@ action :create do
       notifies new_resource.notification, postgresql_service
     end
   end
+  r.cookbook_name = 'postgresql'
 end
 
 action_class do

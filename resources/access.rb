@@ -25,10 +25,9 @@ property :access_method, String, required: true, default: 'ident'
 property :notification,  Symbol, required: true, default: :reload
 
 action :grant do
-  with_run_context :root do # ~FC037
+  r = with_run_context :root do # ~FC037
     edit_resource(:template, "#{conf_dir}/pg_hba.conf") do |new_resource|
       source 'pg_hba.conf.erb'
-      cookbook 'postgresql'
       owner 'postgres'
       group 'postgres'
       mode '0600'
@@ -46,6 +45,7 @@ action :grant do
       notifies new_resource.notification, postgresql_service
     end
   end
+  r.cookbook_name = 'postgresql'
 end
 
 action_class do
