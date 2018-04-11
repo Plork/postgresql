@@ -16,8 +16,6 @@
 # limitations under the License.
 #
 
-property :source,        String, required: true, default: 'pg_hba.conf.erb'
-property :cookbook,      String, default: 'postgresql'
 property :comment,       [String, nil], default: nil
 property :access_type,   String, required: true, default: 'local'
 property :access_db,     String, required: true, default: 'all'
@@ -29,8 +27,8 @@ property :notification,  Symbol, required: true, default: :reload
 action :grant do
   with_run_context :root do # ~FC037
     edit_resource(:template, "#{conf_dir}/pg_hba.conf") do |new_resource|
-      source new_resource.source
-      cookbook_name new_resource.cookbook
+      source 'pg_hba.conf.erb'
+      cookbook 'postgresql'
       owner 'postgres'
       group 'postgres'
       mode '0600'
