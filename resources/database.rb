@@ -52,7 +52,7 @@ action :drop do
 
     bash "drop postgresql database #{new_resource.database})" do
       user 'postgres'
-      command dropdb
+      code dropdb
       not_if { slave? }
       only_if { database_exists?(new_resource) }
     end
